@@ -1,17 +1,19 @@
+import { createContext } from "react";
+
+export const AuthContext = createContext(null);
+
+
 export const getUser = () => {
-  const token = localStorage.getItem("token");
-  if (!token) return null;
-  return JSON.parse(atob(token.split(".")[1]));
+  try {
+    const user = localStorage.getItem("user");
+    if (!user) return null;
+    return JSON.parse(user);
+  } catch (error) {
+    console.error("Invalid user in localStorage", error);
+    localStorage.removeItem("user");
+    return null;
+  }
 };
-
-export const loginMock = (role) => {
-  // fake JWT for testing
-  const payload = btoa(JSON.stringify({ role }));
-  const token = `x.${payload}.y`;
-  localStorage.setItem("token", token);
-};
-
 export const logout = () => {
-  localStorage.removeItem("token");
-  window.location.href = "/login";
+  localStorage.removeItem("user");
 };

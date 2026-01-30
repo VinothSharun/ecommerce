@@ -3,7 +3,12 @@ import { getUser } from "../app/auth";
 
 const AuthGuard = () => {
   const user = getUser();
-  return user ? <Outlet /> : <Navigate to="/login" />;
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Outlet />;
 };
 
 export default AuthGuard;

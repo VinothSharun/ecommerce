@@ -1,11 +1,17 @@
-import { logout } from "../app/auth";
+import {handleLogout} from "../pages/Logout";
 
-const AdminLayout = ({ children }) => (
-  <div>
-    <h2>Admin Panel</h2>
-    <button onClick={logout}>Logout</button>
-    {children}
-  </div>
-);
+
+const AdminLayout = ({children}) => {
+
+  return (
+    <div>
+      <h1>Admin Panel</h1>
+      <button onClick={handleLogout}>Logout</button>
+      {children}
+    </div>
+  );
+};
 
 export default AdminLayout;
+
+
