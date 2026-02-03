@@ -1,3 +1,4 @@
-if (user.role === "ADMIN") navigate("/admin");
-else if (user.role === "SELLER") navigate("/seller");
-else navigate("/");
+import { useContext } from "react";
+import { AuthContext } from "../app/auth";
+
+export const useAuth = () => useContext(AuthContext);

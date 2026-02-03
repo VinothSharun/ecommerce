@@ -1,11 +1,11 @@
-import { logout } from "../app/auth";
+import {handleLogout} from "../pages/Logout";
 
 const UserLayout = ({ children }) => (
-  <div>
-    <h2>User Panel</h2>
-    <button onClick={logout}>Logout</button>
+  <div className="layout">
+    <div className="panel">
+      <h1 className="header user">User Panel</h1>
+    </div>
     {children}
   </div>
 );
-
 export default UserLayout;

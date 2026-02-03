@@ -1,0 +1,80 @@
+.dashboard {
+  display: flex;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.card-grid {
+  display: inline-flex;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+  height: min-content;
+  width: 150px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* ROLE COLORS */
+.card.admin {
+  border-left: 6px solid #7c3aed;
+}
+
+.card.seller {
+  border-left: 6px solid #f97316;
+}
+
+.card.user {
+  border-left: 6px solid #2563eb;
+}
+
+/* SIDEBAR */
+
+.sidebar-container{
+  width: 250px;
+  height: 100vw;
+  position: fixed;
+  background-color: blueviolet;
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  padding-left: 20px;
+}
+
+.sidebar-container ul{
+  list-style-type: none;
+}
+
+.sidebar-container ul li{
+  padding: 10px;
+}
+.card-container{
+  margin-left: 270px;
+  display: inline-flex;
+}

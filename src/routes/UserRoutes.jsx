@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import UserLayout from "../layouts/UserLayout";
-import Home from "../pages/user/Home";
+import UserDashboard from "../pages/user/UserDashboard";
 
 const UserRoutes = () => (
   <UserLayout>
     <Routes>
-      <Route index element={<Home />} />
+      <Route index element={<UserDashboard />} />
     </Routes>
   </UserLayout>
 );

@@ -1,11 +1,23 @@
-import { logout } from "../app/auth";
+import { Outlet } from "react-router-dom";
+import { Sidebar } from "../components/common/Sidebar";
 
-const AdminLayout = ({ children }) => (
-  <div>
-    <h2>Admin Panel</h2>
-    <button onClick={logout}>Logout</button>
-    {children}
-  </div>
-);
+const AdminLayout = () => {
+
+  return (
+    <div className="layout">
+      <div className="panel" style={{ display: "flex" }}>
+        <div className="sidebar-container">
+          <Sidebar />
+        </div>
+          <div className="content" style={{ flex: 1 }}>
+          <Outlet />   
+        </div>
+       
+      </div>
+    </div>
+  );
+};
 
 export default AdminLayout;
+
+
