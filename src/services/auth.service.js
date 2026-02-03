@@ -1,21 +1,28 @@
+import api from "../app/api";
+
 export const login = async (email, password) => {
-  // fake users
-  const users = [
-    { email: "admin@gmail.com", password: "admin123", role: "ADMIN" },
-    { email: "seller@gmail.com", password: "seller123", role: "SELLER" },
-    { email: "user@gmail.com", password: "user123", role: "USER" },
-  ];
-
-  const user = users.find(
-    (u) => u.email === email && u.password === password
+  const response = await api.post(
+    "/api/v1/auth/login",
+    `username=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "application/json",
+      },
+    }
   );
 
-  if (!user) {
-    throw new Error("Invalid credentials");
-  }
+  const { access_token, role } = response.data;
 
-  // simulate API delay
-  return new Promise((resolve) =>
-    setTimeout(() => resolve(user), 500)
-  );
+  const user = { role };
+
+  localStorage.setItem("token", access_token);
+  localStorage.setItem("user", JSON.stringify(user));
+
+  return user;
+};
+
+export const logoutApi = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 };

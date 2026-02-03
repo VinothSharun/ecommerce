@@ -1,8 +1,8 @@
 const SellerDashboard = () => {
   return (
     <div className="dashboard">
-      <h1 className="dashboard-title">Seller Dashboard</h1>
-
+      
+      <div className="card-container">
       <div className="card-grid">
         <div className="card seller">
           <h3>My Products</h3>
@@ -23,6 +23,7 @@ const SellerDashboard = () => {
           <h3>Pending Shipments</h3>
           <p>18</p>
         </div>
+      </div>
       </div>
     </div>
   );

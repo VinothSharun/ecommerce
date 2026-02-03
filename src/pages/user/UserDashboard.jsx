@@ -1,7 +1,7 @@
 const UserDashboard = () => {
   return (
     <div className="dashboard">
-      <h1 className="dashboard-title">User Dashboard</h1>
+      <h1 className="dashboard-title"></h1>
 
       <div className="card-grid">
         <div className="card user">

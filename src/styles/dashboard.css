@@ -1,6 +1,6 @@
 .dashboard {
-  padding: 40px;
-  background: #f4f6f8;
+  display: flex;
+  padding: 20px;
   min-height: 100vh;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .card-grid {
-  display: grid;
+  display: inline-flex;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
@@ -22,6 +22,8 @@
   padding: 25px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
+  height: min-content;
+  width: 150px;
 }
 
 .card:hover {
@@ -50,4 +52,29 @@
 
 .card.user {
   border-left: 6px solid #2563eb;
+}
+
+/* SIDEBAR */
+
+.sidebar-container{
+  width: 250px;
+  height: 100vw;
+  position: fixed;
+  background-color: blueviolet;
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  padding-left: 20px;
+}
+
+.sidebar-container ul{
+  list-style-type: none;
+}
+
+.sidebar-container ul li{
+  padding: 10px;
+}
+.card-container{
+  margin-left: 270px;
+  display: inline-flex;
 }

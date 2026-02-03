@@ -1,18 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../services/auth.service";
-import { useAuth } from "../hooks/useAuth";
 
-const Login = () => {
-  const navigate = useNavigate();
-  const { setUser } = useAuth();
-
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
+export default function Login() {
+  const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,15 +17,17 @@ const Login = () => {
 
     try {
       const user = await login(form.email, form.password);
-      localStorage.setItem("user", JSON.stringify(user));
-      setUser(user);
 
-      // 🔑 role-based redirect
+      // role-based redirect
       if (user.role === "ADMIN") navigate("/admin");
       else if (user.role === "SELLER") navigate("/seller");
       else navigate("/");
     } catch (err) {
-      setError("Invalid email or password");
+      if (err.response?.status === 401 || err.response?.status === 422) {
+        setError("Invalid email or password");
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
     }
   };
 
@@ -67,4 +62,3 @@ const Login = () => {
   );
 };
 
-export default Login;

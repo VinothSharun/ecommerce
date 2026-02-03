@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import RoleGuard from "../guards/RoleGuard";
 import SellerLayout from "../layouts/SellerLayout";
 import SellerDashboard from "../pages/seller/SellerDashboard";
@@ -6,11 +6,13 @@ import SellerDashboard from "../pages/seller/SellerDashboard";
 const SellerRoutes = () => (
   <RoleGuard role="SELLER">
     <SellerLayout>
-      <Routes>
-        <Route index element={<SellerDashboard />} />
-      </Routes>
+      <Outlet />
     </SellerLayout>
   </RoleGuard>
 );
+
+export const sellerRouteElements = [
+  { path: "", element: <SellerDashboard /> },
+];
 
 export default SellerRoutes;

@@ -1,13 +1,19 @@
-import {handleLogout} from "../pages/Logout";
+import { Outlet } from "react-router-dom";
+import { Sidebar } from "../components/common/Sidebar";
 
-
-const AdminLayout = ({children}) => {
+const AdminLayout = () => {
 
   return (
-    <div>
-      <h1>Admin Panel</h1>
-      <button onClick={handleLogout}>Logout</button>
-      {children}
+    <div className="layout">
+      <div className="panel" style={{ display: "flex" }}>
+        <div className="sidebar-container">
+          <Sidebar />
+        </div>
+          <div className="content" style={{ flex: 1 }}>
+          <Outlet />   
+        </div>
+       
+      </div>
     </div>
   );
 };

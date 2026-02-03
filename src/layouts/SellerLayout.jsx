@@ -1,10 +1,18 @@
-import {handleLogout} from "../pages/Logout";
+import { Outlet } from "react-router-dom";
+import { Sidebar } from "../components/common/Sidebar";
 
-const SellerLayout = ({ children }) => (
-  <div>
-    <h2>Seller Panel</h2>
-    <button onClick={handleLogout}>Logout</button>
-    {children}
+const SellerLayout = () => {
+  return (
+  <div className="layout">
+    <div className="panel">
+      <div className="sidebar-container">
+          <Sidebar />
+        </div>
+        <div className="content" style={{ flex: 1 }}>
+          <Outlet />  
+        </div>
+    </div>
   </div>
 );
+}
 export default SellerLayout;

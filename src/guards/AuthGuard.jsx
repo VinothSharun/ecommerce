@@ -1,10 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { getUser } from "../app/auth";
 
 const AuthGuard = () => {
-  const user = getUser();
+  const token = localStorage.getItem("token");
 
-  if (!user) {
+  if (!token) {
     return <Navigate to="/login" replace />;
   }
 
