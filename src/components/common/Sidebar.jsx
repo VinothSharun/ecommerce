@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { handleLogout } from "../../pages/Logout";
 import { getUser } from "../../app/auth";
 
 // Sidebar config
 export const adminMenuItems = [
-  { label: "Dashboard", path: "/dashboard" },
+  { label: "Dashboard", path: "/admin" },
   { label: "Profile", path: "/profile" },
   { label: "Sellers", path: "/admin/add-seller" },
   { label: "Products", path: "/admin/products" },
@@ -19,7 +19,6 @@ export const sellerMenuItems = [
 ];
 
 export const Sidebar = () => {
-  const navigate = useNavigate();
   const user = getUser();
 
   let menuItems = [];
@@ -32,15 +31,18 @@ export const Sidebar = () => {
   ];
 
   return (
-    <div>
+    <div className="sidebar">
       {menuItems.map(({ label, path }) => (
-        <p
+        <NavLink
           key={label}
-          style={{ cursor: "pointer" }}
-          onClick={() => navigate(path)}
+          to={path}
+          end
+          className={({ isActive }) =>
+            isActive ? "sidebar-item active" : "sidebar-item"
+          }
         >
           {label}
-        </p>
+        </NavLink>
       ))}
       <p className="logout-btn" onClick={handleLogout}>
         Logout

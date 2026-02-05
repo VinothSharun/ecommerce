@@ -19,13 +19,15 @@ export default function Login() {
       const user = await login(form.email, form.password);
 
       // role-based redirect
-      if (user.role === "ADMIN") navigate("/admin");
-      else if (user.role === "SELLER") navigate("/seller");
-      else navigate("/");
+      if (user.role === "ADMIN") navigate("/admin", { replace: true });
+      else if (user.role === "SELLER") navigate("/seller", { replace: true });
+      else navigate("/", { replace: true });
     } catch (err) {
       if (err.response?.status === 401 || err.response?.status === 422) {
         setError("Invalid email or password");
-      } else {
+      } else if (err.response?.status === 403) {
+        setError("You are blocked. Please contact admin.");
+      }else{
         setError("Something went wrong. Please try again.");
       }
     }
