@@ -18,7 +18,7 @@ const AppRoutes = () => (
     <Route element={<AuthGuard />}>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminDashboard />} />
-        <Route path="add-seller" element={<AddSeller />} />
+        <Route path="add-seller" element={<AddSeller />}/>
         <Route path="users" element={<ViewUser />} />
         <Route path="products" element={<ViewProducts />} />
       </Route>

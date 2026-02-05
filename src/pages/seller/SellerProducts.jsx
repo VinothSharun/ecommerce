@@ -218,13 +218,13 @@ const SellerProducts = () => {
                                 value={form.price}
                                 onChange={handleChange}
                             />
-                            <input
+                            {/* <input
                                 type="number"
                                 name="stock"
                                 placeholder="Stock"
                                 value={form.stock}
                                 onChange={handleChange}
-                            />
+                            /> */}
                             <button type="submit">{editId ? "Update Product" : "Add Product"}</button>
                         </form>
                     </div>

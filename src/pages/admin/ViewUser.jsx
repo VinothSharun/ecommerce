@@ -18,13 +18,14 @@ const ViewUser = () => {
     setError("");
     try {
       const data = await getUsers();
-      setUsers(Array.isArray(data) ? data : []);
+      const usersArray = Array.isArray(data) ? data : [];
+      setUsers(usersArray);
       // Sync block state from backend (assuming user.is_blocked or user.blocked)
       const blockMap = {};
-      (Array.isArray(data) ? data : []).forEach(user => {
+      usersArray.forEach(user => {
         if (user.role === "USER") {
           // Try both possible property names
-          blockMap[user.id] = user.is_blocked ?? user.blocked ?? false;
+          blockMap[user.id] = !user.is_active;
         }
       });
       setBlockState(blockMap);
